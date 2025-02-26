@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import SelectTopic from './_components/SelectTopic'
+import SelectStyle from './_components/SelectStyle';
 
 function page() {
     const [formData, setFormData] = useState([]);
@@ -13,6 +14,7 @@ function page() {
         <h2 className='font-bold text-4xl text-primary '>Create Your Reel</h2>
         <div className='mt-10 shadow-md p-10'>
             <SelectTopic onUserSelect={onHandleInputChange}/>
+            <SelectStyle/>
         </div>
     </div>
   )
