@@ -14,7 +14,7 @@ function page() {
         <h2 className='font-bold text-4xl text-primary '>Create Your Reel</h2>
         <div className='mt-10 shadow-md p-10'>
             <SelectTopic onUserSelect={onHandleInputChange}/>
-            <SelectStyle/>
+            <SelectStyle onUserSelect={onHandleInputChange}/>
         </div>
     </div>
   )
