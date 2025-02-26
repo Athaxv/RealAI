@@ -14,13 +14,15 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
+    
       <body
-        className={poppins.className}
+        className={`${poppins.className} bg-background  `}
       >
           <Provider>
         {children}
         </Provider>
       </body>
+      
     </html>
     </ClerkProvider>
   );

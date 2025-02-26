@@ -16,7 +16,7 @@ function SideNav() {
         {
             id: 2,
             name: 'Create New',
-            path: '/create-new',
+            path: '/dashboard/create-new',
             icon: FileVideo
         },
         {
@@ -37,7 +37,7 @@ function SideNav() {
         <div className='grid gap-4'>
             {MenuOption.map((item, index) => (
                 <Link href={item.path} key={index}>
-                <div className={`flex items-center p-3 gap-3 hover:bg-secondary rounded-md cursor-pointer ${path==item.path && "bg-primary"}`}>
+                <div className={`flex items-center p-3 gap-3 hover:bg-secondary hover:text-white  rounded-md cursor-pointer ${path==item.path && "bg-primary text-white" }`}>
                     <item.icon/>    
                     <h2>{item.name}</h2>
                 </div>
