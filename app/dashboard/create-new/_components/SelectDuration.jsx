@@ -7,13 +7,15 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 
-function SelectDuration({onValueChange}) {
+function SelectDuration({onUserSelect}) {
     const [duration, setDuration] = useState()
   return (
     <div className='mt-5'>
         <h2 className='font-bold text-xl text-primary'>Duration</h2>
         <p className='text-gray-500'>Select your Duration</p>
         <Select onValueChange={(value) => {setDuration(value)
+                        onUserSelect('duration', value)
+
         }}
             >
                 <SelectTrigger className="w-full mt-2 p-6 text-lg">
