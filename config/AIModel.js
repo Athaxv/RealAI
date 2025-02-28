@@ -11,7 +11,7 @@ const {
     model: "gemini-2.0-flash",
   });
   
-  export const generationConfig = {
+  const generationConfig = {
     temperature: 1,
     topP: 0.95,
     topK: 40,
@@ -19,13 +19,13 @@ const {
     responseMimeType: "application/json",
   };
   
-    const chatSession = model.startChat({
+   export const chatSession = model.startChat({
       generationConfig,
       history: [
         {
           role: "user",
           parts: [
-            {text: "Write a script to generate 20 second video on topic: Interesting historical myth or story with AI images prompt in realistic format for each scene and give me the result in jSON format with imageprompt and contenttext as field"},
+            {text: "Write a script to generate 40 second video on topic: Interesting historical myth or story with AI images prompt in realistic format for each scene and give me the result in jSON format with imageprompt and contenttext as field"},
           ],
         },
         {

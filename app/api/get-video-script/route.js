@@ -1,4 +1,5 @@
-import { ChatSession } from "@google/generative-ai";
+import { chatSession } from "@/config/AIModel";
+// import { ChatSession } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
@@ -6,10 +7,10 @@ export async function POST(req){
         const {prompt} = await req.json()
         console.log(prompt);
 
-        const result = await ChatSession.sendMessage(prompt);
+        const result = await chatSession.sendMessage(prompt);
         console.log(result.response.text());
 
-        return NextResponse.json({'Result': JSON.parse(result.response)});
+        return NextResponse.json({'Result': JSON.parse(result.response.text())});
     } catch (error) {
         return NextResponse.json({'Error': error})
     }

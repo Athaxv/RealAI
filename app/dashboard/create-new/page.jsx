@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import axios from 'axios';
 
 function page() {
-    const [formData, setFormData] = useState([]);
+    const [formData, setFormData] = useState({});
     const onHandleInputChange = (fieldName, fieldValue) => {
         console.log(fieldName, fieldValue)
         setFormData(prev => ({
