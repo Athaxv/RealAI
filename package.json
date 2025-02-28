@@ -25,6 +25,7 @@
     "lucide-react": "^0.475.0",
     "next": "15.1.7",
     "pg": "^8.13.3",
+    "playht": "^0.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",

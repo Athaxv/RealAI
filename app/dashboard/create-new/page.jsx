@@ -34,9 +34,18 @@ function page() {
         }).then((res) => {
             console.log(res.data.result);
             setVideoScript(res.data.result);
+            // GenerateAudioFile(res.data.result)
         })
         setLoading(false);
     }
+
+    // const GenerateAudioFile = (videoScriptData) => {
+    //     let script = '';
+    //     videoScriptData.forEach(item => {
+    //         script = script + item.contenttext + ' ';
+    //     })
+    //     console.log(script);
+    // }
   return (
     <div className='md:px-20'>
         <h2 className='font-bold text-4xl text-primary '>Create Your Reel</h2>
