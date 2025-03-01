@@ -10,7 +10,7 @@ import CustomLoading from './_components/CustomLoading';
 function page() {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({});
-    const [videoScript, setVideoScript] = useState()
+    const [videoScript, setVideoScript] = useState({})
 
     const onHandleInputChange = (fieldName, fieldValue) => {
         console.log(fieldName, fieldValue)
@@ -32,20 +32,20 @@ function page() {
         const result = await axios.post('/api/get-video-script', {
             prompt: prompt,
         }).then((res) => {
-            console.log(res.data.result);
-            setVideoScript(res.data.result);
-            // GenerateAudioFile(res.data.result)
+            console.log(res.data.Result);
+            setVideoScript(res.data.Result);
+            GenerateAudioFile(res.data.Result)
         })
         setLoading(false);
     }
 
-    // const GenerateAudioFile = (videoScriptData) => {
-    //     let script = '';
-    //     videoScriptData.forEach(item => {
-    //         script = script + item.contenttext + ' ';
-    //     })
-    //     console.log(script);
-    // }
+    const GenerateAudioFile = (videoScriptData) => {
+        let script = '';
+        videoScriptData.forEach(item => {
+            script = script + item.contenttext + ' ';
+        })
+        console.log(script);
+    }
   return (
     <div className='md:px-20'>
         <h2 className='font-bold text-4xl text-primary '>Create Your Reel</h2>

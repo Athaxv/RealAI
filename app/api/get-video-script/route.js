@@ -5,13 +5,22 @@ import { NextResponse } from "next/server";
 export async function POST(req){
     try {
         const {prompt} = await req.json()
-        console.log(prompt);
+        console.log("Prompt received", prompt);
 
         const result = await chatSession.sendMessage(prompt);
-        console.log(result.response.text());
+        const text = result.response.text(); // Assuming text() returns plain text
 
-        return NextResponse.json({'Result': JSON.parse(result.response.text())});
+        console.log("AI Response:", text);
+
+        let finalResult;
+        try {
+            finalResult = JSON.parse(text); // Only parse if it's JSON
+        } catch {
+            finalResult = text; // Return plain text if not JSON
+        }
+        return NextResponse.json({ Result: finalResult });
     } catch (error) {
-        return NextResponse.json({'Error': error})
+        console.error("API Error:", error);
+        return NextResponse.json({ Error: "Something went wrong. Please try again." }, { status: 500 });
     }
 }
