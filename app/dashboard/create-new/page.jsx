@@ -6,8 +6,10 @@ import SelectDuration from './_components/SelectDuration';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import CustomLoading from './_components/CustomLoading';
+import { v4 as uuidv4 } from 'uuid';
 
 function page() {
+    const scriptData = "Lily, a curious girl, found an old doll in her attic. Its eyes seemed to follow her. She named it Agnes, but strange things started happening. Toys moved, whispers echoed. One night, Lily heard Agnes whisper her name. She turned to see the doll smiling unnervingly. Lily tried to get rid of Agnes, but the doll always reappeared in her room, closer each time. Finally, Agnes stood at the foot of Lily's bed, whispering,"
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({});
     const [videoScript, setVideoScript] = useState({})
@@ -21,8 +23,9 @@ function page() {
     }
 
     const handleSubmit = () => {
-        GetVideoScript();
+        // GetVideoScript();
         // setLoading(true);
+        GenerateAudioFile(scriptData);
     }
 
     const GetVideoScript = async () => {
@@ -39,12 +42,17 @@ function page() {
         setLoading(false);
     }
 
-    const GenerateAudioFile = (videoScriptData) => {
-        let script = '';
-        videoScriptData.forEach(item => {
-            script = script + item.contenttext + ' ';
-        })
-        console.log(script);
+    const GenerateAudioFile = async (videoScriptData) => {
+        // let script = '';
+        const id = uuidv4();
+        // videoScriptData.forEach(item => {
+        //     script = script + item.contenttext + ' ';
+        // })
+        // console.log(script);
+        await axios.post('/api/generate-audio', {
+            text: videoScriptData,
+            id: id
+        }).then(resp => console.log(resp.data))
     }
   return (
     <div className='md:px-20'>
